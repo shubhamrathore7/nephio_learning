@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shubham-pod-deployment
+  namespace: default
+  labels:
+    run: med-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      run: med-api
+  template:
+  # => from here down its the same as the pods metadata: and spec: sections
+    metadata:
+      labels:
+        run: med-api
+      name: shubhampod
+      namespace: default
+    spec:
+      containers:
+      - image: nginx
+        imagePullPolicy: Always
+        name: med-api
+        resources: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: myservice
+spec:
+  selector:
+    app: med-api
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
