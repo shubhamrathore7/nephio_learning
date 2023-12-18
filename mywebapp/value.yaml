@@ -1,0 +1,9 @@
+# values.yaml
+replicaCount: 1
+
+image:
+  repository: your/webapp-image
+  tag: latest
+  pullPolicy: IfNotPresent
+
+welcomeMessage: "Hello, Helm World!"
