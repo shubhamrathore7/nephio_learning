@@ -5,14 +5,14 @@ metadata:
 upstream:
   type: git
   git:
-    repo: https://github.com/GoogleContainerTools/kpt-functions-sdk
-    directory: /go/get-started
+    repo: https://github.com/shubhamrathore7/nephio_learning.git
+        directory: /skptpkg
     ref: master
   updateStrategy: resource-merge
 upstreamLock:
   type: git
   git:
-    repo: https://github.com/GoogleContainerTools/kpt-functions-sdk
-    directory: /go/get-started
+    repo: https://github.com/shubhamrathore7/nephio_learning.git
+        directory: /skptpkg
     ref: master
     commit: 3255accc518d53fcb92292bfed9250a7f5b32204
