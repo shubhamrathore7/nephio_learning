@@ -1,0 +1,10 @@
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: shubham-pod-deployment
+  namespace: default
+data:
+  podName: example-pod
+  image: nginx:latest
+  

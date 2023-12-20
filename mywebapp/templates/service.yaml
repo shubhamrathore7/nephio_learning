@@ -1,15 +1,12 @@
+# File: mywebapp-chart/templates/service.yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "mywebapp.fullname" . }}
-  labels:
-    {{- include "mywebapp.labels" . | nindent 4 }}
+  name: {{ .Values.serviceName }}
 spec:
-  type: {{ .Values.service.type }}
-  ports:
-    - port: {{ .Values.service.port }}
-      targetPort: http
-      protocol: TCP
-      name: http
   selector:
-    {{- include "mywebapp.selectorLabels" . | nindent 4 }}
+    run: med-api
+  ports:
+  - protocol: TCP
+    port: {{ .Values.servicePort }}
+    targetPort: 80

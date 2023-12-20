@@ -1,6 +1,0 @@
-# mychart/Chart.yaml
-apiVersion: v2
-name: mychart
-description: A Helm chart for pod deployment and service
-version: 0.1.0
-
