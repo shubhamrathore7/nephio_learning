@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: shubham-pod-deployment
+  name: kptpkgpoddeploy
   namespace: default
   labels:
     run: med-api
@@ -15,7 +15,7 @@ spec:
     metadata:
       labels:
         run: med-api
-      name: shubhampod
+      name: kptpkgpod
       namespace: default
     spec:
       containers:
@@ -25,3 +25,16 @@ spec:
         resources: {}
         ports:
         - containerPort: 8081
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: myservicekptpkg
+spec:
+  selector:
+    run: med-api
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8081
