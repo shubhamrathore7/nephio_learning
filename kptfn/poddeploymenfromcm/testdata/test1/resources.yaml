@@ -1,0 +1,50 @@
+
+apiVersion: apps/v2
+kind: Deployment
+metadata:
+  name: kptpkgpoddeploy
+  namespace: default
+  labels:
+    run: med-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      run: med-api
+  template:
+    metadata:
+      labels:
+        run: med-api
+      name: kptpkgpod
+      namespace: default
+    spec:
+      containers:
+      - image: nginx
+        imagePullPolicy: Always
+        name: med-api
+        resources: {}
+        ports:
+        - containerPort: 8081
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: myservicekptpkg
+spec:
+  selector:
+    run: med-api
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8081
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: shubham-pod-deployment
+  namespace: default
+data:
+  podName: example-pod
+  image: nginx:latest
+
